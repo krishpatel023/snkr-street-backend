@@ -21,7 +21,7 @@ dotenv.config();
 //CORS
 // app.use(cors())
 app.use(cors({
-    origin: ['http://localhost:5173','https://ers-seven.vercel.app'],
+    origin: ['http://localhost:5173','https://snkr-street-frontend.vercel.app'],
     credentials: true,
 }));
 app.use(cookieParser())
