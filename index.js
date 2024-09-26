@@ -20,9 +20,9 @@ app.use(express.json())
 dotenv.config();
 //CORS
 // app.use(cors())
-app.options('*', cors());
 app.use(cors({
-    origin: ['http://localhost:5173','https://snkr-street-frontend.vercel.app'],
+    // origin: ['http://localhost:5173','https://snkr-street-frontend.vercel.app'],
+    origin: '*',
     credentials: true,
 }));
 app.use(cookieParser())
