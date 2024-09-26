@@ -20,10 +20,20 @@ app.use(express.json())
 dotenv.config();
 //CORS
 // app.use(cors())
+app.options('*', cors());
 app.use(cors({
-    origin: ['http://localhost:5173','https://snkr-street-frontend.vercel.app'],
+    origin: function (origin, callback) {
+      const allowedOrigins = ['http://localhost:5173', 'https://snkr-street-frontend.vercel.app'];
+      if (allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
+        console.log("Req Origin: ",origin);        
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
-}));
+  }));
+  
 app.use(cookieParser())
 // res.header( "Access-Control-Allow-Origin", '*' );
 
